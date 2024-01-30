@@ -19,6 +19,5 @@ resource "aws_instance" "demo-ec2" {
   tags = {
     "Name" = "freestyle-ec2"
   }
-  user_data = filebase64("${path.module}/ec2-user-data.sh")
 }
 
