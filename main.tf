@@ -12,3 +12,11 @@ provider "aws" {
   region = "us-east-2"
 }
 
+resource "aws_instance" "demo-ec2" {
+  ami                         = "ami-0866a04d72a1f5479"
+  instance_type               = "t2.micro"
+  associate_public_ip_address = true
+  tags = {
+    "Name" = "freestyle-ec2"
+  }
+}
