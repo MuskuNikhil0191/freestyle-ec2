@@ -27,6 +27,11 @@ resource "aws_instance" "demo-ec2" {
               yum install -y httpd
               systemctl start httpd
               systemctl enable httpd
-              echo "Hello from web hook ec2!" > /var/www/html/index.html
+              echo "<html>
+                    <body>
+                    <h1>ABD</h1>
+                    <img src="https://w0.peakpx.com/wallpaper/24/37/HD-wallpaper-ab-de-villiers-abd-escn-mr360-rcb-superman.jpg" width="400" height="600">
+                    </body>
+                    </html>" > /var/www/html/index.html
               EOF
 }
