@@ -27,6 +27,11 @@ resource "aws_instance" "demo-ec2" {
               yum install -y httpd
               systemctl start httpd
               systemctl enable httpd
-              echo "Hello from User Data!" > /var/www/html/index.html
+              echo "<html>
+                  <body>
+                  <h1>Rohith Sharma</h1>
+                  <img src="https://pbs.twimg.com/media/E1GgiDYUUAswk4R.jpg:large" width="400" height="600">
+                  </body>
+                  </html>" > /var/www/html/index.html
               EOF
 }
