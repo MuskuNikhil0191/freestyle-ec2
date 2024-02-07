@@ -13,25 +13,18 @@ provider "aws" {
 }
 
 resource "aws_instance" "demo-ec2" {
-  ami                         = "ami-0866a04d72a1f5479"
+  ami                         = "ami-05fb0b8c1424f266b"
   instance_type               = "t2.micro"
   associate_public_ip_address = true
   tags = {
-    "Name" = "feature-ec2"
+    "Name" = "ubuntu-ec2"
   }
-  user_data = <<-EOF
-		#!/bin/bash
-    		# Use this for your user data (script from top to bottom)
-    		# install httpd (Linux 2 version)
-		yum update -y
-	    	yum install -y httpd
-	    	systemctl start httpd
-		systemctl enable httpd
-    		echo "<html>
-	        <body>
-	        <h1>Rohith Sharma</h1>
-	        <img src="https://pbs.twimg.com/media/E1GgiDYUUAswk4R.jpg:large" width="400" height="600">
-	        </body>
-        	</html>" > /var/www/html/index.html
-		EOF
+  user_data = <<EOF
+		#! /bin/bash
+                sudo apt-get update
+		sudo apt-get install -y apache2
+		sudo systemctl start apache2
+		sudo systemctl enable apache2
+		echo "<h1>Deployed via Terraform</h1>" | sudo tee /var/www/html/index.html
+	EOF
 }
