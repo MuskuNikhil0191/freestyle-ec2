@@ -17,7 +17,7 @@ resource "aws_instance" "demo-ec2" {
   instance_type               = "t2.micro"
   associate_public_ip_address = true
   tags = {
-    "Name" = "freestyle-ec2"
+    "Name" = "RS-ec2"
   }
   user_data = <<-EOF
               #!/bin/bash
