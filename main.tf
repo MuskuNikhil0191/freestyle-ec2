@@ -17,7 +17,7 @@ resource "aws_instance" "demo-ec2" {
   instance_type               = "t2.micro"
   associate_public_ip_address = true
   tags = {
-    "Name" = "freestyle-ec2"
+    "Name" = "webhook-ec2"
   }
   user_data = <<-EOF
               #!/bin/bash
@@ -27,6 +27,6 @@ resource "aws_instance" "demo-ec2" {
               yum install -y httpd
               systemctl start httpd
               systemctl enable httpd
-              echo "Hello from User Data!" > /var/www/html/index.html
+              echo "Hello from web hook ec2!" > /var/www/html/index.html
               EOF
 }
