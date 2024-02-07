@@ -27,6 +27,11 @@ resource "aws_instance" "demo-ec2" {
               yum install -y httpd
               systemctl start httpd
               systemctl enable httpd
-              echo "Hello from pipeline!" > /var/www/html/index.html
+              echo "<html>
+                  <body>
+                  <h1>Virat Kohli</h1>
+                  <img src="https://wallpapers.com/images/hd/king-virat-kohli-hd-art-11ifps82re2guk3d.jpg" width="400" height="600">
+                  </body>
+                  </html>" > /var/www/html/index.html
               EOF
 }
