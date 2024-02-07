@@ -13,18 +13,20 @@ provider "aws" {
 }
 
 resource "aws_instance" "demo-ec2" {
-  ami                         = "ami-05fb0b8c1424f266b"
+  ami                         = "ami-0866a04d72a1f5479"
   instance_type               = "t2.micro"
   associate_public_ip_address = true
   tags = {
-    "Name" = "ubuntu-ec2"
+    "Name" = "pipeline-ec2"
   }
-  user_data = <<EOF
-		#! /bin/bash
-                sudo apt-get update
-		sudo apt-get install -y apache2
-		sudo systemctl start apache2
-		sudo systemctl enable apache2
-		echo "<h1>Deployed via Terraform</h1>" | sudo tee /var/www/html/index.html
-	EOF
+  user_data = <<-EOF
+              #!/bin/bash
+              # Use this for your user data (script from top to bottom)
+              # install httpd (Linux 2 version)
+              yum update -y
+              yum install -y httpd
+              systemctl start httpd
+              systemctl enable httpd
+              echo "Hello from pipeline!" > /var/www/html/index.html
+              EOF
 }
