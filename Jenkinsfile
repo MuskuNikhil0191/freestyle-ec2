@@ -5,11 +5,6 @@ pipeline{
     }
     agent any
     stages{
-        stage('Git Checkout'){
-            steps{
-                git 'https://github.com/MuskuNikhil0191/freestyle-ec2'
-            }
-        }
         stage('Terraform Init'){
             steps{
                 sh 'terraform init'
